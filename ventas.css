@@ -101,3 +101,11 @@ p {
         max-width: 600px;
     }
 }
+
+small {
+    color: red;
+    font-style: italic;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}

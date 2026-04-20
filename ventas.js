@@ -11,19 +11,42 @@ function calcularComision(numeroVentas, PrecioProducto){
         return comision;
 }
 
+function validarCampo(idInput, idError){
+    let valor = document.getElementById(idInput).value.trim();
+    let error = document.getElementById(idError);
+
+    error.textContent = "";
+
+    // Vacío
+    if(valor === ""){
+        error.textContent = "Este campo es obligatorio";
+        return false;
+    }
+
+    // Solo números
+    if(!/^\d+$/.test(valor)){
+        error.textContent = "Solo se permiten números";
+        return false;
+    }
+
+    // Máximo 5 dígitos
+    if(valor.length > 5){
+        error.textContent = "Máximo 5 dígitos";
+        return false;
+    }
+
+    return true;
+}
+
 function calcular(){
-    //recuperamos propiedades de la caja de texto
-    //let componenteSueldoBase = document.getElementById("txtSueldoBase");
-    //let componenteVentas = document.getElementById("txtVentas");
-    //let componentePrecio = document.getElementById("txtPrecio");
-    //recuperamos el valor de las cajas de texto
-    //let sueldoBaseStr= componenteSueldoBase.value;
-    //let numeroVentasStr = componenteVentas.value;
-    //let PrecioProductoStr = componentePrecio.value;
-    //let sueldoBaseStr = recuperarTexto("txtSueldoBase");
-    //let numeroVentasStr = recuperarTexto("txtVentas");
-    //let PrecioProductosStr = recuperarTexto("txtPrecio");
-    //convertimos el texto a Numero
+
+    let v1 = validarCampo("txtSueldoBase","errorSueldo");
+    let v2 = validarCampo("txtVentas","errorVentas");
+    let v3 = validarCampo("txtPrecio","errorPrecio");
+
+if (!v1 || !v2 || !v3){
+    return;
+}
 
     let sueldoBase=recuperarFloat("txtSueldoBase");
     let numeroVentas=recuperarFloat("txtVentas");
